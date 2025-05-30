@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Clinic System</title>
+    <link rel="stylesheet" href="static\login.css">
+</head>
+
+<style>
+  
+</style>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <img src="static\images\image.png" alt="Clinic Image">
+        </div>
+        <div class="right-side">
+            <div class="logo-container">
+                <img src="static\images\cliniclogo.png" alt="Clinic Logo">
+                <img src="static\images\name.jpg" alt="Clinic Name">
+            </div>
+            <form class="login-form" method="POST">
+
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  <div style="color: red; font-size: 20px; font-weight: bold; text-align: center; margin-bottom: 15px;">
+                    {% for category, message in messages %}
+                      {{ message }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {% endwith %}
+              
+
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <select id="role" name="role">
+                        <option value="admin">Admin</option>
+                        <option value="frontdesk">Front Desk</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" required>
+                        <input type="checkbox" id="showPassword">
+                        <label for="showPassword">Show Password</label>
+                    </div>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const showPasswordCheckbox = document.getElementById('showPassword');
+
+        showPasswordCheckbox.addEventListener('change', function() {
+            passwordInput.type = this.checked ? 'text' : 'password';
+        });
+    </script>
+</body>
+</html>

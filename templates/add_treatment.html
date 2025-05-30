@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add Treatment</title>
+        <link rel="stylesheet" href="static\common.css">
+        <link rel="stylesheet" href="static\form.css">
+        <link rel="stylesheet" href="static\table.css">
+    </head>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url('static/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh;
+        }
+        .green-btn {
+            background-color: #28a745; /* Bootstrap green */
+        }
+        
+        .green-btn:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+<body>
+    <div id="add" class="form-section">
+    <h2>Add Treatment</h2>
+    <form method="POST" action="{{ url_for('add_treatment') }}">
+        <label>
+            <input type="text" name="treatment_id" required>
+            <span>Treatment ID:</span>
+        </label>
+
+        <label>
+            <input type="text" name="treatment_name" required>
+            <span>Treatment Name:</span>
+        </label>
+
+        <label>
+            <textarea name="description" rows="4" cols="50" placeholder="Enter treatment description here..."> </textarea>
+            <span>Description:</span>
+        </label>
+
+        <label> 
+            <input type="number" name="cost" required>
+            <span>Cost (₹):</span>
+        </label>
+        
+        <button type="submit">Add</button>
+    </form>
+</div>
+<a href="{{ url_for('treatment') }}">
+    <button type="button" class="dashboard-btn green-btn">Back to  Manage Treatments</button>
+</a>
+</body>
+</html>

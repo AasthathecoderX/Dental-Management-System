@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manage Patients</title>
+    
+        <!-- Common layout styles -->
+        <link rel="stylesheet" href="static/patient.css">
+    
+    
+        <style>
+            .dashboard-container {
+                text-align: center; /* Center all content within the container */
+            }
+    
+            h1 {
+                margin-bottom:10px; /* Adjust spacing between main heading and sub-heading */
+            }
+    
+            h2 {
+                margin-bottom: 90px !important; /* Adjust spacing between sub-heading and buttons */
+            }
+    
+            ul {
+                margin-top: 50px; /* Adjust spacing between buttons and potential content below */
+                justify-content: space-around; /* Keep buttons spaced out */
+            }
+            .form-section {
+                padding: 40px;
+                background-color: rgba(255, 255, 255, 0.95);
+                border-radius: 12px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                width: 400px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .dashboard-btn {
+                background-color: #2e86de;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                font-size: 16px;
+                font-weight: 500;
+                border-radius: 8px;
+                cursor: pointer;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                margin-top: 120px;
+                margin-bottom: 20px;
+                align-self: center;
+            }
+            
+            .dashboard-btn:hover {
+                background-color: #1b4f72;
+                transform: scale(1.05);
+            }
+        </style>
+    </head>
+<body>
+    <div class="dashboard-container fade-in">
+    <h1>Welcome to GOOD DENTAL</h1>
+    <h2>💳Manage Payments</h2>
+
+    <!-- Navigation Buttons -->
+    <div id="nav_grid">
+            <ul>
+                <li><a href="{{ url_for('add_payment')}}" class="right">➕ Add Payment</a></li>
+                <li><a href="{{ url_for('update_payment')}}" class="right">📝 Update Payment</a></li>
+                <li><a href="{{ url_for('display_payment')}}" class="right">🧾 Display Payments</a></li>
+            </ul>
+
+            <!-- Button in middle -->
+            <a href="{{ url_for('frontdesk_dashboard') }}">
+                <button type="button" class="dashboard-btn">Back to Dashboard</button>
+            </a>
+        </div>
+    </div>
+</body>
+
+    
+    
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

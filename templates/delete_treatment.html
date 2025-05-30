@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Delete Treatment</title>
+        <link rel="stylesheet" href="static\common.css">
+        <link rel="stylesheet" href="static\form.css">
+        
+    </head>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url('static/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh;
+        }
+        .green-btn {
+            background-color: #28a745; /* Bootstrap green */
+        }
+        
+        .green-btn:hover {
+            background-color: #1e7e34;
+        }
+        
+        </style>
+<body>
+    <div id="delete" class="section form-section">
+    <h2>Delete Treatment</h2>
+    <form method="POST" action="{{ url_for('delete_treatment') }}">
+        <label> 
+            <input type="text" name="treatment_id" required>
+            <span>Treatment ID:</span>
+        </label>
+        
+        <button type="submit">Delete</button>
+    </form>
+</div>
+<a href="{{ url_for('treatment') }}">
+    <button type="button" class="dashboard-btn green-btn">Back to  Manage Treatment</button>
+</a>
+</body>
+</html>

@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 98%;
+    max-width: 1200px;
+    padding: 60px 100px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 1s ease-out;
+
+    /* NEW: Flex to center content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #007bff;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    margin-top: 0px;
+    text-align: center; /* Add this line to center h1 */
+}
+
+h2 {
+    color: #007bff !important;
+    margin-bottom: 40px !important;
+    font-size: 2.5em !important;
+    text-align: center !important;
+    margin-top: 40px;
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Keep everything centered */
+    gap: 30px; /* Add spacing between the buttons */
+    margin-top: 40px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+ul li a {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 18px 30px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+ul li a:hover {
+    background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

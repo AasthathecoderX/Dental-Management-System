@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Patient</title>
+    <link rel="stylesheet" href="static\common.css">
+    <link rel="stylesheet" href="static\form.css">
+    <link rel="stylesheet" href="static\table.css">
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: url('static/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        min-height: 100vh;
+    }
+    textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+        resize: vertical;
+    }
+    .green-btn {
+        background-color: #28a745; /* Bootstrap green */
+    }
+    
+    .green-btn:hover {
+        background-color: #1e7e34;
+    }
+    
+</style>  
+    <div id="add" class="form-section">
+        <h2>Add Patient</h2>
+        <form method="POST" action="{{ url_for('add_patient') }}">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flashed-messages">
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+            <label>
+                <input type="text" name="pid" required>
+                <span>Patient ID:</span>
+                
+            </label>
+
+            <label> 
+                <input type="text" name="name" required>
+                <span>Name:</span>
+            </label>
+
+            <label> 
+                <input type="number" name="age" required>
+                <span>Age:</span>
+            </label>
+
+            <label>
+                <input type="number" name="contact" required>
+                <span>Contact Number:</span>
+            </label>
+
+            <label>
+                Medical History:
+                <textarea name="history" rows="4" placeholder="Enter brief medical history"></textarea>
+                
+            </label>
+
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <a href="{{ url_for('patient') }}">
+        <button type="button" class="dashboard-btn green-btn">Back to Manage Patient</button>
+    </a>
+</body>
+</html>

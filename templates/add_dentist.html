@@ -1,0 +1,80 @@
+<!-- Add Dentist Form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Dentist</title>
+    <link rel="stylesheet" href="static\common.css">
+    <link rel="stylesheet" href="static\form.css">
+    <link rel="stylesheet" href="static\table.css">
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: url('static/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        min-height: 100vh;
+    }
+    .green-btn {
+        background-color: #28a745; /* Bootstrap green */
+    }
+    
+    .green-btn:hover {
+        background-color: #1e7e34;
+    }
+</style>    
+<body>
+
+    <div id="add" class="form-section">
+        <h2>Add Dentist</h2>
+        <form method="POST" action="{{ url_for('add_dentist') }}">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="flashed-messages">
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }}">
+                    {{ message }}
+                  </div>
+                {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+            <label>
+                <input type="text" name="dentist_id" required>
+                <span>Dentist ID:</span>
+            </label>
+        
+            <label>
+                <input type="text" name="name" required>
+                <span>Name:</span>
+            </label>
+        
+            <label>
+                <input type="text" name="specialization" required>
+                <span>Specialization:</span>
+            </label>
+        
+            <label>
+                <input type="text" name="contact" required>
+                <span>Contact Number:</span>
+            </label>
+        
+            <label>
+                <input type="number" name="experience" required>
+                <span>Experience (years):</span>
+            </label>
+        
+            <button type="submit">Add</button>
+        </form>
+        
+    </div>
+    <a href="{{ url_for('dentist') }}">
+        <button type="button" class="dashboard-btn green-btn">Back to  Manage Dentist</button>
+    </a>
+</body>
+</html>

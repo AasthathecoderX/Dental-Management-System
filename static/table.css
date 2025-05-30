@@ -1,0 +1,91 @@
+.table-section {
+    padding: 30px;
+    margin: 30px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 1200px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow-x: auto;
+    transition: all 0.3s ease;
+}
+
+table {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+table th,
+table td {
+    padding: 18px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+    transition: background 0.2s ease;
+}
+
+table th {
+    background-color: #2e86de;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+table tr:nth-child(even) td {
+    background-color: #f8f9fa;
+}
+
+table tr:hover td {
+    background-color: #dceefc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+table tr:hover {
+    background-color: #e6f0ff;
+    transform: scale(1.01);
+    box-shadow: 0 2px 10px rgba(46, 134, 222, 0.1);
+}
+
+table td:hover {
+    background-color: #d0e7ff;
+    cursor: pointer;
+}
+
+/* Optional: Zebra striping with smoother contrast */
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+@media screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table td {
+        position: relative;
+        padding-left: 50%;
+    }
+
+    table td::before {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #333;
+        content: attr(data-label);
+    }
+}

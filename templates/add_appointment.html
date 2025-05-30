@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Appointment</title>
+    <link rel="stylesheet" href="static/common.css">
+    <link rel="stylesheet" href="static/form.css">
+    <link rel="stylesheet" href="static/table.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url('static/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh;
+        }
+        .green-btn {
+            background-color: #28a745; /* Bootstrap green */
+        }
+    
+        .green-btn:hover {
+            background-color: #1e7e34;
+        }
+        label {
+            display: block;
+            margin-bottom: 15px; /* Adjust spacing between label groups */
+        }
+    
+        label select {
+            display: block;
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 5px; /* Space between the label text and the select */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 1em;
+        }
+    
+        /* Target the Status label to add margin BELOW it (for space between Status and Slot) */
+        #status_label {
+            margin-bottom: 10px; /* Adjust this value to control the space below the Status label */
+        }
+    
+        /* Ensure a small top margin for the select to separate it from the label text */
+        label select {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="add" class="form-section">
+        <h2>Add Appointment</h2>
+        <form id="addAppointmentForm" action="{{ url_for('add_appoint') }}" method="post">
+            <label>
+                <input type="text" name="appointment_id" required />
+                <span>Appointment ID:</span>
+            </label>
+
+            <label>
+                <input type="text" name="patient_id" required />
+                <span>Patient ID:</span>
+            </label>
+
+            <label>
+                <input type="text" name="dentist_id" required />
+                <span>Dentist ID:</span>
+            </label>
+
+            <label>
+                <input type="text" name="treatment_id" required />
+                <span>Treatment ID:</span>
+            </label>
+            <label>
+              Date:
+              <input type="date" name="date" required />
+          </label>
+          
+          
+          
+          
+          <label id='status_label'>
+            Status:
+            <select name="status" required>
+                <option value="Scheduled">Scheduled</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </label>
+
+            <label>
+                Slot:
+                <select name="slot" required>
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="01:00 PM">01:00 PM</option>
+                    <option value="02:00 PM">02:00 PM</option>
+                    <option value="03:00 PM">03:00 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                    <option value="05:00 PM">05:00 PM</option>
+                </select>
+                
+            </label>
+
+            <button type="submit">Add</button>
+        </form>
+
+    </div>
+    <a href="{{ url_for('appointment') }}">
+        <button type="button" class="dashboard-btn green-btn">Back to Manage Appointment</button>
+    </a>
+</body>
+</html>

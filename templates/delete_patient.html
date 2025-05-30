@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Patient</title>
+    <link rel="stylesheet" href="static\common.css">
+    <link rel="stylesheet" href="static\form.css">
+    
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: url('static/images/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        min-height: 100vh;
+    }
+    .green-btn {
+        background-color: #28a745; /* Bootstrap green */
+    }
+    
+    .green-btn:hover {
+        background-color: #1e7e34;
+    }
+    </style>
+<body>
+
+<div id="delete" class="section form-section">
+    <h2>Delete Patient</h2>
+    <form method="POST" action="{{ url_for('delete_patient') }}">
+        <label>
+            <input type="text" name="patient_id" required>
+            <span>Patient ID:</span>
+        </label><br><br>
+        <button type="submit">Delete</button>
+    </form>
+</div>
+<a href="{{ url_for('patient') }}">
+    <button type="button" class="dashboard-btn green-btn">Back to Manage Patient</button>
+</a>
+</body>
+</html>

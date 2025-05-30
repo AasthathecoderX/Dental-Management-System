@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>Add Payment</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='common.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='table.css') }}">
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Segoe UI', sans-serif;
+                background: url('{{ url_for('static', filename='images/background.jpg') }}') no-repeat center center fixed;
+                background-size: cover;
+                display: flex;
+                justify-content: center; /* Center horizontally */
+                align-items: center; /* Center vertically */
+                min-height: 100vh;
+            }
+        
+            .form-section {
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 40px 35px;
+                margin: 20px auto;
+                border-radius: 16px;
+                width: 100%;
+                max-width: 500px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+                animation: fadeInUp 0.8s ease-in-out;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+        
+            .form-section h2 {
+                margin-bottom: 30px;
+                color: #2e86de;
+                text-align: center;
+                font-size: 26px;
+                font-weight: 700;
+                animation: slideIn 1s ease-out;
+            }
+        
+            form label {
+                position: relative;
+                display: block;
+                margin-bottom: 30px; /* Spacing between all label groups */
+                color: #333;
+                font-size: 15px;
+                font-weight: 500;
+            }
+        
+            form label span {
+                position: absolute;
+                top: 16px; /* Increased top value */
+                left: 14px;
+                font-size: 14px;
+                color: #888;
+                pointer-events: none;
+                transition: all 0.2s ease;
+                background: white;
+                padding: 0 4px;
+                z-index: 1;
+            }
+        
+            input[type="text"],
+            input[type="number"],
+            input[type="date"],
+            select {
+                width: 100%;
+                padding: 14px 14px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-sizing: border-box;
+                font-size: 14px;
+                background: transparent;
+                position: relative;
+                z-index: 0;
+                appearance: none; /* Remove default arrow for select */
+                -webkit-appearance: none; /* For Safari and Chrome */
+                -moz-appearance: none;    /* For Firefox */
+                padding-right: 30px; /* Space for custom arrow (if needed) */
+            }
+        
+            input:focus,
+            input:valid,
+            select:focus,
+            select:valid {
+                border-color: #2e86de;
+                outline: none;
+                box-shadow: 0 0 6px rgba(46, 134, 222, 0.3);
+            }
+        
+            input:focus + span,
+            input:valid + span,
+            select:focus + span,
+            select:valid + span {
+                top: -10px;
+                font-size: 12px;
+                color: #2e86de;
+            }
+        
+            button[type="submit"] {
+                background: linear-gradient(to right, #2e86de, #367097);
+                color: white;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                display: block;
+                margin: 20px auto 0; /* Added some top margin for the button */
+                transition: background 0.3s ease, transform 0.2s ease;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            }
+        
+            button[type="submit"]:hover {
+                background: linear-gradient(to right, #1b4f72, #145a9e);
+                transform: translateY(-2px);
+            }
+        
+            @keyframes fadeInUp {
+                0% {
+                    opacity: 0;
+                    transform: translateY(40px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        
+            @keyframes slideIn {
+                0% {
+                    transform: translateY(-20px);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        
+            .green-btn {
+                background-color: #28a745; /* Bootstrap green */
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                text-decoration: none;
+                margin-top: 20px;
+                display: inline-block;
+            }
+        
+            .green-btn:hover {
+                background-color: #1e7e34;
+            }
+        
+            /* Style the container to control spacing for dropdowns */
+            .dropdown-label-container {
+                margin-bottom: 30px; /* Adjust this value for space BETWEEN the dropdown sections */
+            }
+        
+            .dropdown-label-container label {
+                display: block; /* Ensure label is on its own line */
+                margin-bottom: 30px; /* Space between the label text and the dropdown */
+                font-size: 15px;
+                font-weight: 500;
+                color: #333;
+            }
+        
+            .dropdown-label-container select {
+                width: 100%;
+                padding: 14px 14px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-sizing: border-box;
+                font-size: 14px;
+                background: transparent;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                padding-right: 30px;
+                margin-top: 0; /* Reset any potential top margin from the general select rule */
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="add" class="form-section">
+            <h2>Add Payment</h2>
+            <form method="POST" action="{{ url_for('add_payment') }}">
+
+                <label>
+                    <input type="text" name="payment_id" placeholder="P_001" required>
+                    <span>Payment ID: </span>
+                </label>
+
+                <label>
+                    <input type="text" name="patient_id" placeholder="PT_001" required>
+                    <span>Patient ID:</span>
+                </label>
+
+                <label>
+                    <input type="text" name="appointment_id" placeholder="A_001" required>
+                    <span>Appointment ID:</span>
+                </label>
+
+                <label>
+                    <input type="number" name="amount" placeholder="500" required>
+                    <span>Amount:</span>
+                </label>
+
+                <div class="dropdown-label-container">
+                    <label for="method">Method:</label>
+                    <select name="method" id="method" required>
+                        <option value="Cash">Cash</option>
+                        <option value="Online">Online</option>
+                    </select>
+                </div>
+
+                <div class="dropdown-label-container">
+                    <label for="status_label">Status:</label>
+                    <select name="status" id="status" required>
+                        <option value="Pending">Pending</option>
+                        <option value="Paid">Paid</option>
+                    </select>
+                </div>
+
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="date" required>
+                <br><br>
+
+                <button type="submit">Add</button>
+
+
+            </form>
+
+        </div>
+        <a href="{{ url_for('payment') }}">
+            <button type="button" class="dashboard-btn green-btn">Back to Payment</button>
+        </a>
+
+
+    </body>
+    </html>

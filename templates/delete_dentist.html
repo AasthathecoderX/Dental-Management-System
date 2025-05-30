@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Dentist</title>
+    <link rel="stylesheet" href="static\common.css">
+    <link rel="stylesheet" href="static\form.css">
+    
+</head>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('static/images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh;
+}
+.green-btn {
+    background-color: #28a745; /* Bootstrap green */
+}
+
+.green-btn:hover {
+    background-color: #1e7e34;
+}
+</style>
+<body>
+
+    <div id="delete" class="form-section">
+        <h2>Delete Dentist</h2>
+        <form method="POST" action="{{ url_for('delete_dentist') }}">
+            <label>
+                <input type="text" name="dentist_id" required>
+                <span>Dentist ID:</span>
+            </label>
+            
+            <label>
+                <input type="text" name="name" required>
+                <span>Name:</span>
+            </label>
+        
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+    
+    <a href="{{ url_for('dentist') }}">
+        <button type="button" class="dashboard-btn green-btn">Back to  Manage Dentist</button>
+    </a>
+</body>
+</html>
